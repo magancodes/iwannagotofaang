@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 0, 0, 0;
+  
+  /* Neon Colors */
+  --neon-pink: 255, 65, 180;
+  --neon-cyan: 0, 255, 240;
+  --neon-green: 0, 255, 120;
+  --neon-yellow: 255, 255, 0;
+  
+  /* Brutalist Borders */
+  --border-width: 1px;
+  --border-radius: 4px;
+  
+  /* Font */
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-rgb: 0, 0, 0;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 325 100% 63%;  /* Neon Pink */
+    --primary-foreground: 0 0% 0%;
+    --secondary: 180 100% 50%; /* Neon Cyan */
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 142 100% 50%; /* Neon Green */
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 180 100% 50%; 
+    --input: 0 0% 14.9%;
+    --ring: 325 100% 63%;
+    --chart-1: 325 100% 63%;
+    --chart-2: 180 100% 50%;
+    --chart-3: 142 100% 50%;
+    --chart-4: 60 100% 50%;
+    --chart-5: 270 100% 60%;
+    --radius: 0.25rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Brutalist Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-mono font-bold;
+  }
+  
+  /* Neon Text effect */
+  .neon-text {
+    text-shadow: 
+      0 0 5px rgba(var(--neon-cyan), 0.8),
+      0 0 10px rgba(var(--neon-cyan), 0.4),
+      0 0 15px rgba(var(--neon-cyan), 0.2);
+  }
+  
+  /* Brutalist Form Elements */
+  input, textarea, select {
+    @apply bg-black border-[var(--border-width)] rounded-[var(--border-radius)];
+  }
+  
+  /* Brutalist Buttons */
+  button, .btn {
+    @apply transition-colors duration-200;
+  }
+}
+
+/* Custom Classes */
+.text-neon-pink {
+  color: rgb(var(--neon-pink));
+}
+
+.text-neon-cyan {
+  color: rgb(var(--neon-cyan));
+}
+
+.text-neon-green {
+  color: rgb(var(--neon-green));
+}
+
+.text-neon-yellow {
+  color: rgb(var(--neon-yellow));
+}
+
+.border-neon-pink {
+  border-color: rgba(var(--neon-pink), 0.7);
+}
+
+.border-neon-cyan {
+  border-color: rgba(var(--neon-cyan), 0.7);
+}
+
+.border-neon-green {
+  border-color: rgba(var(--neon-green), 0.7);
+}
+
+.from-neon-pink {
+  --tw-gradient-from: rgb(var(--neon-pink)) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(var(--neon-pink) / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-neon-cyan {
+  --tw-gradient-to: rgb(var(--neon-cyan)) var(--tw-gradient-to-position);
+}
+
+.via-neon-cyan {
+  --tw-gradient-via-position: var(--tw-gradient-via-position, );
+  --tw-gradient-to: rgb(var(--neon-cyan) / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(var(--neon-cyan)) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+
+.to-neon-green {
+  --tw-gradient-to: rgb(var(--neon-green)) var(--tw-gradient-to-position);
+}
+
+/* Brutalist Grid Lines */
+.grid-lines {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Glitch Effect */
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 rgb(var(--neon-pink));
+  animation: glitch-animation 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: 2px 0 rgb(var(--neon-cyan));
+  animation: glitch-animation 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-animation {
+  0% {
+    clip-path: inset(48% 0 36% 0);
+  }
+  20% {
+    clip-path: inset(60% 0 12% 0);
+  }
+  40% {
+    clip-path: inset(18% 0 69% 0);
+  }
+  60% {
+    clip-path: inset(83% 0 5% 0);
+  }
+  80% {
+    clip-path: inset(33% 0 47% 0);
+  }
+  100% {
+    clip-path: inset(75% 0 13% 0);
+  }
+}
