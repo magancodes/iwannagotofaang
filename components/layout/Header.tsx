@@ -50,7 +50,7 @@ export default function Header() {
               History
             </Link>
             <Link 
-              href="https://github.com" 
+              href="https://github.com/magancodes" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center space-x-1 text-gray-300 hover:text-neon-green transition-colors"
@@ -96,7 +96,7 @@ export default function Header() {
                 History
               </Link>
               <Link 
-                href="https://github.com" 
+                href="https://github.com/magancodes" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center space-x-1 text-gray-300 hover:text-neon-green transition-colors py-2"
