@@ -14,4 +14,4 @@ Resume Generator
 Creates professional summaries of your project ready for your resume.
 
 Custom Recommendations
-Offers personalized suggestions to improve your project for specific companies.
+Offers personalized suggestions to improve your project for specific companies
